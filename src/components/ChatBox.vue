@@ -29,7 +29,7 @@ export default {
   methods: {
     loadChat() {
       const client = new tmi.Client({
-        channels: [ '' ]
+        channels: [ 'auronplay' ]
       });
 
       client.connect();
@@ -59,6 +59,7 @@ export default {
   right: 0px;
   background-color: #f5f5f5;
   padding: 5px;
+  overflow: auto;
 }
 
 .msg-box {
