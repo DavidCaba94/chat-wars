@@ -2,8 +2,9 @@
   <div class="chat-container" ref="chat">
     <div class="chat-header">
       <input class="input-channel" type="text" placeholder="ID del canal" v-model="channelID">
-      <div class="btn-connect" @click="connectChat()">Connect</div>
-      <div class="btn-disconnect" @click="disconnectChat()">Disconnect</div>
+      <div v-if="!chatConected && !loading" class="btn-connect" @click="connectChat()">Connect</div>
+      <div v-if="chatConected && !loading" class="btn-disconnect" @click="disconnectChat()">Disconnect</div>
+      <div v-if="loading" class="lds-ripple"><div></div><div></div></div>
     </div>
     <div v-for="(msg, i) in chatHistory" :key="i">
       <div class="msg-box">
@@ -24,7 +25,9 @@ export default {
     return {
       channelID: '',
       chatHistory: [],
-      client: null
+      client: null,
+      chatConected: false,
+      loading: false
     }
   },
   components: {
@@ -42,14 +45,18 @@ export default {
     disconnectChat() {
       if (this.client) {
         this.client.disconnect();
+        this.chatConected = false;
+        this.chatHistory = [];
       }
     },
-    loadChat() {
+    async loadChat() {
       this.client = new tmi.Client({
         channels: [ this.channelID ]
       });
-
-      this.client.connect();
+      this.loading = true;
+      await this.client.connect();
+      this.loading = false;
+      this.chatConected = true;
 
       this.client.on('message', (channel, tags, message, self) => {
         // console.log(`${channel}: ${self}`);
@@ -80,7 +87,7 @@ export default {
 .chat-container {
   position: fixed;
   width: 350px;
-  height: calc(100vh - 90px);
+  height: calc(100vh - 130px);
   top: 50px;
   right: 0px;
   background-color: #282b30;
@@ -103,12 +110,12 @@ export default {
   top: 50px;
   right: 0px;
   background-color: #282b30;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 9px -5px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
 .input-channel {
+  width: 240px;
   border: 0px;
-  border-bottom: 1px solid #707377;
   color: #b4b4b4;
   background-color: #282b30;
   padding: 5px;
@@ -122,14 +129,14 @@ export default {
   width: 70px;
   height: 25px;
   border-radius: 5px;
-  background-color: #bb7cfd;
+  background-color: #47d65f;
   color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   cursor: pointer;
 }
 
 .btn-connect:hover {
-  background-color: #9d41ff;
+  background-color: #26b83e;
 }
 
 .btn-disconnect {
@@ -214,5 +221,56 @@ export default {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #707377; 
+}
+
+.lds-ripple {
+  display: inline-block;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin-right: 20px;
+}
+
+.lds-ripple div {
+  position: absolute;
+  border: 4px solid #fff;
+  opacity: 1;
+  border-radius: 50%;
+  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.lds-ripple div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+
+@keyframes lds-ripple {
+  0% {
+    top: 18px;
+    left: 18px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  4.9% {
+    top: 18px;
+    left: 18px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  5% {
+    top: 18px;
+    left: 18px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 0px;
+    left: 0px;
+    width: 36px;
+    height: 36px;
+    opacity: 0;
+  }
 }
 </style>
