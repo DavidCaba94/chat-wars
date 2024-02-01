@@ -1,14 +1,20 @@
 <template>
   <ChatBox></ChatBox>
+  <NavBar></NavBar>
+  <MainMenu></MainMenu>
 </template>
 
 <script>
 import ChatBox from './components/ChatBox.vue'
+import NavBar from './components/NavBar.vue'
+import MainMenu from './components/MainMenu.vue'
 
 export default {
   name: 'App',
   components: {
-    ChatBox
+    ChatBox,
+    NavBar,
+    MainMenu
   }
 }
 </script>
@@ -19,7 +25,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: #ffffff;
+  background-color: #121212;
 }
 </style>
