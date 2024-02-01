@@ -1,5 +1,8 @@
 <template>
   <div class="menu">
+    <div class="game-card">
+      Ahorcado
+    </div>
   </div>
 </template>
 
@@ -18,5 +21,9 @@ export default {
   top: 50px;
   left: 0px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
 </style>
