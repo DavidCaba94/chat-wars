@@ -1,30 +1,46 @@
 <template>
   <div class="menu">
     <div class="game-card-container">
-      <div class="game-card color-1">
-        
+      <div class="game-card color-1" @click="changeMenu('GameHangman')">
+        <img class="card-icon" src="../assets/icons/hangman.png" alt="Hangman">
       </div>
       <div class="game-card-title">Ahorcado</div>
     </div>
     <div class="game-card-container">
-      <div class="game-card color-2">
-        
+      <div class="game-card color-2" @click="changeMenu('GameMath')">
+        <img class="card-icon" src="../assets/icons/math.png" alt="Math">
       </div>
       <div class="game-card-title">Math</div>
+    </div>
+    <div class="game-card-container">
+      <div class="game-card color-3" @click="changeMenu('GameWordle')">
+        <img class="card-icon" src="../assets/icons/wordle.png" alt="Wordle">
+      </div>
+      <div class="game-card-title">Wordle</div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'MainMenu'
+  name: 'MainMenu',
+  data() {
+    return {
+      
+    }
+  },
+  methods: {
+    changeMenu(selectedOption) {
+      this.$emit('changeMenu', selectedOption);
+    }
+  }
 }
 </script>
 
 <style scoped>
 .menu {
   position: fixed;
-  width: 100%;
+  width: calc(100% - 350px);
   height: calc(100vh - 50px);
   background-color: #424549;
   top: 50px;
@@ -38,7 +54,7 @@ export default {
 }
 
 .game-card-container {
-  width: 300px;
+  width: 250px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -49,8 +65,8 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 250px;
-  height: 200px;
+  width: 200px;
+  height: 160px;
   border-radius: 10px;
   cursor: pointer;
 }
@@ -71,8 +87,21 @@ export default {
   background-color: #fae04a;
 }
 
+.game-card.color-3 {
+  background-color: #9afd7c;
+}
+
+.game-card.color-3:hover {
+  background-color: #6edb4c;
+}
+
 .game-card-title {
   margin-top: 10px;
   font-weight: bold;
+}
+
+.card-icon {
+  width: 90px;
+  opacity: 0.5;
 }
 </style>

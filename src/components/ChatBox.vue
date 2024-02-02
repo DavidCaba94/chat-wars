@@ -133,6 +133,7 @@ export default {
   color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   cursor: pointer;
+  font-size: 12px;
 }
 
 .btn-connect:hover {
@@ -150,6 +151,7 @@ export default {
   color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   cursor: pointer;
+  font-size: 12px;
 }
 
 .btn-disconnect:hover {
