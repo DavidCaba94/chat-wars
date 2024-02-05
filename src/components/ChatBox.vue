@@ -72,6 +72,7 @@ export default {
           time: new Date()
         };
         this.chatHistory.push(obj);
+        this.$emit('newMessage', obj);
         this.scrollToBottom();
       });
     },
@@ -87,11 +88,11 @@ export default {
 .chat-container {
   position: fixed;
   width: 350px;
-  height: calc(100vh - 130px);
+  height: calc(100vh - 140px);
   top: 50px;
   right: 0px;
   background-color: #282b30;
-  padding: 20px 10px;
+  padding: 30px 10px;
   padding-top: 60px;
   overflow: auto;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);

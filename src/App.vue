@@ -1,19 +1,24 @@
 <template>
-  <ChatBox></ChatBox>
+  <ChatBox
+    @newMessage="newMessage">
+  </ChatBox>
   <NavBar></NavBar>
   <MainMenu
     v-if="screenSelected === ''"
     @changeMenu="changeMenu">
   </MainMenu>
   <GameHangman
+    ref="GameHangman"
     v-if="screenSelected === 'GameHangman'"
     @changeMenu="changeMenu">
   </GameHangman>
   <GameMath
+    ref="GameMath"
     v-if="screenSelected === 'GameMath'"
     @changeMenu="changeMenu">
   </GameMath>
   <GameWordle
+    ref="GameWordle"
     v-if="screenSelected === 'GameWordle'"
     @changeMenu="changeMenu">
   </GameWordle>
@@ -45,7 +50,15 @@ export default {
   methods: {
     changeMenu(selectedOption) {
       this.screenSelected = selectedOption;
-      console.log(selectedOption);
+    },
+    newMessage(msg) {
+      if (this.screenSelected === 'GameHangman') {
+        this.$refs.GameHangman.newMessage(msg);
+      } else if (this.screenSelected === 'GameMath') {
+        this.$refs.GameMath.newMessage(msg);
+      } else if (this.screenSelected === 'GameWordle') {
+        this.$refs.GameWordle.newMessage(msg);
+      }
     }
   }
 }

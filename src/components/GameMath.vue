@@ -5,6 +5,9 @@
         <img class="icon-close" src="../assets/icons/close.png" alt="Close" @click="changeMenu('')">
       </div>
     </div>
+    <div class="game-area">
+
+    </div>
   </div>
 </template>
 
@@ -41,7 +44,7 @@ export default {
 }
 
 .close-game {
-  width: 95%;
+  width: calc(100% - 70px);
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -65,5 +68,10 @@ export default {
 
 .icon-close {
   width: 25px;
+}
+
+.game-area {
+  width: calc(100% - 60px);
+  height: calc(100vh - 150px);
 }
 </style>
