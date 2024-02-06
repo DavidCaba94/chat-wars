@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: 'GameWordle',
+  name: 'GameFlags',
   data() {
     return {
 
