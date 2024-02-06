@@ -8,15 +8,27 @@
     </div>
     <div class="game-card-container">
       <div class="game-card color-2" @click="changeMenu('GameMath')">
-        <img class="card-icon" src="../assets/icons/math.png" alt="Math">
+        <img class="card-icon" src="../assets/icons/math.png" alt="Mates">
       </div>
-      <div class="game-card-title">Math</div>
+      <div class="game-card-title">Mates</div>
     </div>
     <div class="game-card-container">
       <div class="game-card color-3" @click="changeMenu('GameWordle')">
         <img class="card-icon" src="../assets/icons/wordle.png" alt="Wordle">
       </div>
       <div class="game-card-title">Wordle</div>
+    </div>
+    <div class="game-card-container">
+      <div class="game-card color-4" @click="changeMenu('GameGeography')">
+        <img class="card-icon" src="../assets/icons/geography.png" alt="Geografía">
+      </div>
+      <div class="game-card-title">Geografía</div>
+    </div>
+    <div class="game-card-container">
+      <div class="game-card color-5" @click="changeMenu('GameFlags')">
+        <img class="card-icon" src="../assets/icons/flag.png" alt="Banderas">
+      </div>
+      <div class="game-card-title">Banderas</div>
     </div>
   </div>
 </template>
@@ -40,12 +52,11 @@ export default {
 <style scoped>
 .menu {
   position: fixed;
-  width: calc(100% - 350px);
-  height: calc(100vh - 50px);
+  width: calc(100% - 410px);
+  max-height: calc(100vh - 90px);
   background-color: #424549;
   top: 50px;
   left: 0px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -59,6 +70,7 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  margin-bottom: 50px;
 }
 
 .game-card {
@@ -93,6 +105,22 @@ export default {
 
 .game-card.color-3:hover {
   background-color: #6edb4c;
+}
+
+.game-card.color-4 {
+  background-color: #7cc9fd;
+}
+
+.game-card.color-4:hover {
+  background-color: #48a6e4;
+}
+
+.game-card.color-5 {
+  background-color: #fd7c7c;
+}
+
+.game-card.color-5:hover {
+  background-color: #e75656;
 }
 
 .game-card-title {

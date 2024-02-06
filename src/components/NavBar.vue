@@ -1,7 +1,7 @@
 <template>
   <div class="nav-bar">
     <div class="first-items">
-      <img class="icon" src="../assets/logo.png" alt="Chat Wars" @click="goToMenu()">
+      <img class="icon" src="../assets/logo.png" alt="Chat Wars" @click="changeMenu('')">
       <div class="menu-title">Chat Wars</div>
     </div>
     <div class="last-items">
@@ -15,12 +15,12 @@ export default {
   name: 'NavBar',
   data() {
     return {
-        
+      
     }
   },
   methods: {
-    goToMenu() {
-
+    changeMenu(selectedOption) {
+      this.$emit('changeMenu', selectedOption);
     },
     showInfo() {
 
