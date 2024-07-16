@@ -34,6 +34,11 @@
     v-if="screenSelected === 'GameFlags'"
     @changeMenu="changeMenu">
   </GameFlags>
+  <GameCarreras
+    ref="GameCarreras"
+    v-if="screenSelected === 'GameCarreras'"
+    @changeMenu="changeMenu">
+  </GameCarreras>
 </template>
 
 <script>
@@ -45,6 +50,7 @@ import GameMath from './components/GameMath.vue'
 import GameWordle from './components/GameWordle.vue'
 import GameGeography from './components/GameGeography.vue'
 import GameFlags from './components/GameFlags.vue'
+import GameCarreras from './components/GameCarreras.vue'
 
 export default {
   name: 'App',
@@ -56,7 +62,8 @@ export default {
     GameMath,
     GameWordle,
     GameGeography,
-    GameFlags
+    GameFlags,
+    GameCarreras
   },
   data() {
     return {
@@ -75,7 +82,11 @@ export default {
       } else if (this.screenSelected === 'GameWordle') {
         this.$refs.GameWordle.newMessage(msg);
       } else if (this.screenSelected === 'GameGeography') {
-        this.$refs.GameWordle.newMessage(msg);
+        this.$refs.GameGeography.newMessage(msg);
+      } else if (this.screenSelected === 'GameFlags') {
+        this.$refs.GameFlags.newMessage(msg);
+      } else if (this.screenSelected === 'GameCarreras') {
+        this.$refs.GameCarreras.newMessage(msg);
       }
     }
   }

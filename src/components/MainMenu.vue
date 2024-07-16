@@ -30,6 +30,12 @@
       </div>
       <div class="game-card-title">Banderas</div>
     </div>
+    <div class="game-card-container">
+      <div class="game-card color-6" @click="changeMenu('GameCarreras')">
+        <img class="card-icon" src="../assets/icons/race.png" alt="arreras">
+      </div>
+      <div class="game-card-title">Carreras</div>
+    </div>
   </div>
 </template>
 
@@ -59,9 +65,10 @@ export default {
   left: 0px;
   display: flex;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
   padding: 20px;
+  overflow: auto;
 }
 
 .game-card-container {
@@ -121,6 +128,14 @@ export default {
 
 .game-card.color-5:hover {
   background-color: #e75656;
+}
+
+.game-card.color-6 {
+  background-color: #ffffff;
+}
+
+.game-card.color-6:hover {
+  background-color: #dddddd;
 }
 
 .game-card-title {
